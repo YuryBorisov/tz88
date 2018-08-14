@@ -12,7 +12,7 @@ class HomeController extends BaseController
     public function index()
     {
         $result = json_decode($_REQUEST['json'], true);
-        if (json_last_error() === JSON_ERROR_NONE && $this->validate($result)) {
+        if (json_last_error() === JSON_ERROR_NONE && $this->validation($result)) {
 
             $cards = $sortedCards = $from = $to = $start = [];
 
@@ -130,9 +130,20 @@ class HomeController extends BaseController
         }
     }
 
-    private function validate($arr) {
-        /* Я не стал расписывать валидацию полей */
-        return true;
+    private function validation($arr) {
+        $flag = true;
+        foreach ($arr as $a) {
+            if (!isset($a['route']['name'],
+                $a['route']['from'],
+                $a['route']['to'],
+                $a['transport']['type'],
+                $a['transport']['number'],
+                $a['seat'])) {
+                $flag = false;
+                break;
+            }
+        }
+        return $flag;
     }
 
 }
