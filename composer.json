@@ -1,0 +1,17 @@
+{
+    "name": "borisov/tz",
+    "authors": [
+        {
+            "name": "Yury Borisov",
+            "email": "yury_borisov@rambler.ru"
+        }
+    ],
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+
+}
