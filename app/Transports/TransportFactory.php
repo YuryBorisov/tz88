@@ -3,10 +3,12 @@
 namespace App\Transports;
 
 
+use App\Route;
+
 class TransportFactory
 {
 
-    public static function factory($type, $number, $route)
+    public static function factory($type, $number, Route $route)
     {
         $obj = null;
         switch ($type) {
