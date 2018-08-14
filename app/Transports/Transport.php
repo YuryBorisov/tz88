@@ -35,7 +35,7 @@ abstract class Transport
      * @param $number
      * @param $route
      */
-    public function __construct($type, $number, $route)
+    public function __construct($type, $number, Route $route)
     {
         $this->type = $type;
         $this->number = $number;
@@ -75,7 +75,7 @@ abstract class Transport
     }
 
     /**
-     * @return mixed
+     * @return Route
      */
     public function getRoute()
     {
@@ -83,7 +83,7 @@ abstract class Transport
     }
 
     /**
-     * @param mixed $route
+     * @param Route $route
      */
     public function setRoute($route)
     {

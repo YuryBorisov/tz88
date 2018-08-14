@@ -41,21 +41,16 @@ class HomeController extends BaseController
 
             $this->sortCards($start, $cards, $sortedCards);
 
-            $str = null;
-            $arr = [];
-
             foreach ($sortedCards as $card) {
                 $s = 'Take ' . $card->getTransport()->getName() .
                     ' from ' . $card->getTransport()->getRoute()->getFrom() .
                     ' to ' . $card->getTransport()->getRoute()->getTo() .
                     '. Route number ' . $card->getTransport()->getRoute()->getName() .
                     '. Seat ' . $card->getSeat();
-                $str .= $s . "\n";
-                $arr[] = $s;
+                $this->json['result']['str'] .= $s . "\n";
+                $this->json['result']['items'][] = $s;
             }
             $this->json['status'] = true;
-            $this->json['result']['str'] = $str;
-            $this->json['result']['items'] = $arr;
         } else
             $this->json['error']['message'] = 'invalid json';
 
